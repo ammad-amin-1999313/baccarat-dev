@@ -43,6 +43,7 @@ const TableForm = () => {
   };
 
   const handleSubmit = async (e) => {
+    console.log('creating the table');
     e.preventDefault();
     setLoading(true);
     setError(null);
@@ -59,6 +60,7 @@ const TableForm = () => {
         formDataWithStatus
       );
       setSuccessMessage(response.data.message);
+      setFormData(initialFormData)
     } catch (error) {
       setError("Error creating table. Please check the console for details.");
       console.error("Error creating table:", error);
@@ -160,6 +162,7 @@ const TableForm = () => {
         {/* ----button---- */}
         <div className="w-6/12  mx-auto">
           <button
+          onClick={handleSubmit}
             type="submit"
             className="w-full text-black py-2 px-4 rounded-md bg-gray-400 hover:bg-gray-500 focus:outline-none focus:ring focus:border-blue-300 mt-8"
             disabled={loading}
